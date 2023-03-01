@@ -9,7 +9,7 @@ fetchCatagory()
 const showCatagory=(data)=>{
     const itemsList = document.getElementById('item-list');
 data.slice(0,7).forEach(catagory =>{ 
-    console.log(catagory)
+    
     const {strCategory} = catagory;
     itemsList.innerHTML += `
         <li class="nav-item">
@@ -80,3 +80,18 @@ fetch('https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=Coffee / Tea')
 .then(data => showItems(data.drinks))
 }
 mainShow()
+
+
+
+
+
+document.getElementById('search-btn').addEventListener('click', ()=>{
+    
+    const inputValue = document.getElementById('search-input').value;
+    console.log(inputValue)
+    
+})
+
+const fetchSearchItem = ()=>{
+    const URL = ''
+}
