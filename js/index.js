@@ -13,17 +13,22 @@ data.slice(0,7).forEach(catagory =>{
     const {strCategory} = catagory;
     itemsList.innerHTML += `
         <li class="nav-item">
-          <a class="nav-link " aria-current="page" href="#" onclick="itemsDetails('${strCategory}')">${strCategory}</a>
+          <a class="nav-link " aria-current="page" href="#" onclick="itemsDetails('${strCategory}',this)">${strCategory}</a>
         </li>
     `
 
 })
 }
 
-const itemsDetails = (strCategory) =>{
-    const getCatagory = strCategory
+const itemsDetails = (strCategory,link) =>{
+    const navItmes = document.querySelectorAll('.nav-link');
+    navItmes.forEach(navItem => {
+        navItem.classList.remove('active')
+    })
+    link.classList.add('active')
+    
     const URL = `https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=${strCategory}`
-    console.log(URL)
+    
     fetch(URL)
     .then(res=>res.json())
     .then(data => showItems(data.drinks))
